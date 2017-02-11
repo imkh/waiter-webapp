@@ -11,12 +11,14 @@
       </md-card-header>
       <md-card-content>
         <md-input-container>
-          <md-input placeholder="Username"></md-input>
+          <label>Username</label>
+          <md-input type="default" v-model="login"></md-input>
         </md-input-container>
-        <md-input-container>
-          <md-input placeholder="Password"></md-input>
+        <md-input-container md-has-password>
+          <label>Password</label>
+          <md-input type="password" v-model="password"></md-input>
         </md-input-container>
-        <md-button class="md-raised md-primary" v-on:click="Login()">Login</md-button>
+        <md-button class="md-raised md-primary" v-on:click="doLogin()">Login</md-button>
         <md-button class="md-raised md-primary" v-on:click="SignIn()">Sign In</md-button>
       </md-card-content>
     </md-card>
@@ -24,8 +26,22 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      password: '',
+      login: ''
+    }
+  },
+  methods: {
+    doLogin: function() {
+      axios.post('http://localhost:5000/user/login', {password: this.password, email: this.login}).then(function (response) {
+        console.log(response)
+      })
+    }
+  }
 }
 </script>
 
@@ -37,7 +53,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 30px;
-  margin-left: 160px;
-  margin-right: 160px;
+  margin-left: 300px;
+  margin-right: 300px;
 }
 </style>
