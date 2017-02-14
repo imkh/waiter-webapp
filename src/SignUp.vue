@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <md-card>
       <md-card-header>
         <div class="md-title">
@@ -18,8 +18,6 @@
           <label>Password</label>
           <md-input type="password" v-model="password"></md-input>
         </md-input-container>
-        <md-button class="md-raised md-primary" v-on:click="doLogin()">Login</md-button>
-        <md-button class="md-raised md-primary" v-on:click="SignIn()">Sign In</md-button>
       </md-card-content>
     </md-card>
   </div>
@@ -28,7 +26,7 @@
 <script>
 import axios from 'axios'
 export default {
-  name: 'app',
+  name: 'SignUp',
   data () {
     return {
       password: '',
@@ -36,9 +34,16 @@ export default {
     }
   },
   methods: {
+    closeDialog(ref) {
+      this.$refs[ref].close();
+    },
     doLogin: function() {
+      var that = this
       axios.post('http://localhost:5000/user/login', {password: this.password, email: this.login}).then(function (response) {
         console.log(response)
+        that.$refs["success"].open();
+      }).catch(function (error) {
+        that.$refs["error"].open();
       })
     }
   }
