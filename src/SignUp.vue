@@ -11,13 +11,22 @@
       </md-card-header>
       <md-card-content>
         <md-input-container>
-          <label>Username</label>
-          <md-input type="default" v-model="login"></md-input>
+          <label>First name</label>
+          <md-input type="default" v-model="firstname"></md-input>
+        </md-input-container>
+        <md-input-container>
+          <label>Last name</label>
+          <md-input type="default" v-model="lastname"></md-input>
+        </md-input-container>
+        <md-input-container>
+          <label>Email address</label>
+          <md-input type="default" v-model="email"></md-input>
         </md-input-container>
         <md-input-container md-has-password>
           <label>Password</label>
           <md-input type="password" v-model="password"></md-input>
         </md-input-container>
+        <md-button class="md-raised md-primary" v-on:click="doCreate()">Create account</md-button>
       </md-card-content>
     </md-card>
   </div>
@@ -29,17 +38,19 @@ export default {
   name: 'SignUp',
   data () {
     return {
-      password: '',
-      login: ''
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: ''
     }
   },
   methods: {
     closeDialog(ref) {
       this.$refs[ref].close();
     },
-    doLogin: function() {
+    doCreate: function() {
       var that = this
-      axios.post('http://localhost:5000/user/login', {password: this.password, email: this.login}).then(function (response) {
+      axios.post('http://localhost:5000/user', {firstname: this.firstname, lastname: this.lastname, email: this.email, password: this.password}).then(function (response) {
         console.log(response)
         that.$refs["success"].open();
       }).catch(function (error) {

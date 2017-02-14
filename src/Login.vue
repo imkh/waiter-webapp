@@ -11,7 +11,7 @@
       </md-card-header>
       <md-card-content>
         <md-input-container>
-          <label>Username</label>
+          <label>Email address</label>
           <md-input type="default" v-model="login"></md-input>
         </md-input-container>
         <md-input-container md-has-password>
@@ -44,7 +44,7 @@
 <script>
 import axios from 'axios'
 export default {
-  name: 'SignIn',
+  name: 'Login',
   data () {
     return {
       password: '',

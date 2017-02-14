@@ -7,13 +7,13 @@ import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css'
 
 import SignUp from './SignUp'
-import SignIn from './SignIn'
+import Login from './Login'
 
 Vue.use(VueMaterial)
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', component: SignIn },
+  { path: '/', component: Login },
   { path: '/signup', component: SignUp }
 ]
 
