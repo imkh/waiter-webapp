@@ -19,17 +19,9 @@
           <md-input type="password" v-model="password"></md-input>
         </md-input-container>
         <md-button class="md-raised md-primary" v-on:click="doLogin()">Login</md-button>
-        <router-link to="/signup">
-          <md-button class="md-raised md-primary" v-on:click="SignIn()">Sign Up</md-button>
-        </router-link>
+        <md-button class="md-raised md-primary" v-on:click="SignUp()">Sign Up</md-button>
       </md-card-content>
     </md-card>
-    <md-dialog md-open-from="#Login" md-close-to="#Login" ref="success">
-      <md-dialog-title>Connexion succeed!</md-dialog-title>
-      <md-dialog-content>You are now connected to Waiter</md-dialog-content>
-      <md-dialog-actions>
-        <md-button class="md-primary" @click.native="closeDialog('success')">Ok</md-button>
-    </md-dialog-actions>
     <md-dialog md-open-from="#Login" md-close-to="#Login" ref="error">
       <md-dialog-title>Connexion failed</md-dialog-title>
       <md-dialog-content>Wrong username or password</md-dialog-content>
@@ -59,10 +51,13 @@ export default {
       var that = this
       axios.post('http://localhost:5000/user/login', {password: this.password, email: this.login}).then(function (response) {
         console.log(response)
-        that.$refs["success"].open();
+        that.$router.push('/home')
       }).catch(function (error) {
         that.$refs["error"].open();
       })
+    },
+    SignUp: function() {
+      this.$router.push('/signup')
     }
   }
 }

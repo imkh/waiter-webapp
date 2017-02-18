@@ -8,13 +8,15 @@ import 'vue-material/dist/vue-material.css'
 
 import SignUp from './SignUp'
 import Login from './Login'
+import LandingPage from './LandingPage'
 
 Vue.use(VueMaterial)
 Vue.use(VueRouter)
 
 const routes = [
   { path: '/', component: Login },
-  { path: '/signup', component: SignUp }
+  { path: '/signup', component: SignUp },
+  { path: '/home', component: LandingPage }
 ]
 
 const router = new VueRouter({

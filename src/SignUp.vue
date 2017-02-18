@@ -27,6 +27,13 @@
           <md-input type="password" v-model="password"></md-input>
         </md-input-container>
         <md-button class="md-raised md-primary" v-on:click="doCreate()">Create account</md-button>
+      <md-dialog md-open-from="#Create account" md-close-to="#Create account" ref="error">
+        <md-dialog-title>Can not create account</md-dialog-title>
+        <md-dialog-content>Complete all the fields to proceed</md-dialog-content>
+        <md-dialog-actions>
+          <md-button class="md-primary" @click.native="closeDialog('error')">Ok</md-button>
+      </md-dialog-actions>
+    </md-dialog>
       </md-card-content>
     </md-card>
   </div>
@@ -52,7 +59,7 @@ export default {
       var that = this
       axios.post('http://localhost:5000/user', {firstname: this.firstname, lastname: this.lastname, email: this.email, password: this.password}).then(function (response) {
         console.log(response)
-        that.$refs["success"].open();
+        that.$router.push('/home')
       }).catch(function (error) {
         that.$refs["error"].open();
       })
