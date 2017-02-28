@@ -6,9 +6,9 @@ import VueRouter from 'vue-router'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css'
 
-import SignUp from './SignUp'
-import Login from './Login'
-import LandingPage from './LandingPage'
+import SignUp from './components/SignUp'
+import Login from './components/Login'
+import LandingPage from './components/LandingPage'
 
 Vue.use(VueMaterial)
 Vue.use(VueRouter)

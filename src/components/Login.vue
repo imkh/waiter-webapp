@@ -22,6 +22,7 @@
         <md-button class="md-raised md-primary" v-on:click="SignUp()">Sign Up</md-button>
       </md-card-content>
     </md-card>
+    <md-progress md-theme="purple" md-indeterminate></md-progress>
     <md-dialog md-open-from="#Login" md-close-to="#Login" ref="error">
       <md-dialog-title>Connexion failed</md-dialog-title>
       <md-dialog-content>Wrong username or password</md-dialog-content>
@@ -40,7 +41,7 @@ export default {
   data () {
     return {
       password: '',
-      login: ''
+      login: '',
     }
   },
   methods: {
@@ -50,7 +51,7 @@ export default {
     doLogin: function() {
       var that = this
       axios.post('http://localhost:5000/user/login', {password: this.password, email: this.login}).then(function (response) {
-        console.log(response)
+        console.log(response.data.data.token)
         that.$router.push('/home')
       }).catch(function (error) {
         that.$refs["error"].open();
