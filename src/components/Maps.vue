@@ -5,7 +5,7 @@
     <template>
       <gmap-map
         :center="center"
-        :zoom="8"
+        :zoom="17"
         style="width: 1100px; height: 800px"
       >
       </gmap-map>
@@ -19,7 +19,7 @@ export default {
   name: 'LandingPage',
   data () {
     return {
-      center: {lat: 10.0, lng: 10.0},
+      center: {lat: 48.8151239, lng: 2.3631254},
 }
 }
 }
