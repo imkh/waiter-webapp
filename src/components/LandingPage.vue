@@ -35,6 +35,7 @@ import axios from 'axios'
 import Events from './Events'
 import Account from './Account'
 import Maps from './Maps'
+
 export default {
   name: 'LandingPage',
   data () {
@@ -53,21 +54,13 @@ export default {
   },
   methods: {
     addEvent: function() {
-      console.log("tata")
-    },
-    doUpdate: function() {
-      var that = this
-      axios.put('http://localhost:5000/user/:id/password', {firstname: this.password, lastname: this.newPassword, email: this.email}).then(function (response) {
-        console.log(response)
-        //that.$router.push('/home')
-      }).catch(function (error) {
-        that.$refs["error"].open();
-      })
+      //console.log("tata")
     },
     doSave: function() {
       var that = this
-      axios.put('http://localhost:5000/user/:id/password', {password: this.password, newPassword: this.newPassword}).then(function (response) {
-        console.log(response)
+      axios.defaults.headers.common['x-access-token'] = localStorage.getItem("token");
+      axios.put('http://localhost:5000/user/' + localStorage.getItem("user") + '/password', {password: this.password, newPassword: this.newPassword}).then(function (response) {
+
         that.$router.push('/home')
       }).catch(function (error) {
         //that.$refs["error"].open();

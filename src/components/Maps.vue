@@ -1,19 +1,15 @@
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm2gJJ15zXN5UduJYp_Wgrlf7kITVU9ak" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgkQY1TAWu78i1C2z22mws5zM0Dv8NHPc&callback=initMap" async defer></script>
 
 <template>
   <md-card-content>
-      <map
-      :center="center"
-      :zoom="7"
-    >
-      <marker
-        v-for="m in markers"
-        :position.sync="m.position"
-        :clickable="true"
-        :draggable="true"
-        @g-click="center=m.position"
-      ></marker>
-    </map>
+    <template>
+      <gmap-map
+        :center="center"
+        :zoom="8"
+        style="width: 1100px; height: 800px"
+      >
+      </gmap-map>
+    </template>
   </md-card-content>
 </template>
 
@@ -23,6 +19,7 @@ export default {
   name: 'LandingPage',
   data () {
     return {
+      center: {lat: 10.0, lng: 10.0},
 }
 }
 }
@@ -40,9 +37,5 @@ export default {
   margin-left: 300px;
   margin-right: 300px;
   list-style-type: none;
-  #map {
-      height: 400px;
-      width: 100%;
-  }
 }
 </style>

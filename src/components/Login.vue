@@ -51,7 +51,8 @@ export default {
     doLogin: function() {
       var that = this
       axios.post('http://localhost:5000/user/login', {password: this.password, email: this.login}).then(function (response) {
-        console.log(response.data.data.token)
+        localStorage.setItem("token", response.data.data.token)
+        localStorage.setItem("user", response.data.data.user)
         that.$router.push('/home')
       }).catch(function (error) {
         that.$refs["error"].open();

@@ -12,7 +12,7 @@
         <label>Email address</label>
         <md-input type="default" v-model="email"></md-input>
       </md-input-container>
-      <md-button class="md-raised md-primary" v-on:click="Save()">Save</md-button>
+      <md-button class="md-raised md-primary" v-on:click="doUpdate()">Update</md-button>
   </md-card-content>
 </template>
 
@@ -30,21 +30,17 @@ export default {
       items: []
     }
   },
-  mounted: function() {
-    var that = this
-    axios.get('http://localhost:5000/event/').then(function(response) {
-      that.items = response.data.data
-      console.log(response.data)
-    })
-  },
-  Save: function() {
-    var that = this
-    axios.put('http://localhost:5000/user/:id/password', {password: this.password, newPassword: this.newPassword}).then(function (response) {
-      console.log(response)
-      that.$router.push('/home')
-    }).catch(function (error) {
-      //that.$refs["error"].open();
-    })
+  methods: {
+    doUpdate: function() {
+      var that = this
+      axios.defaults.headers.common['x-access-token'] = localStorage.getItem("token");
+      axios.put('http://localhost:5000/user/' + localStorage.getItem("user") + '/profile', {firstname: this.firstname, lastname: this.lastname, email: this.email}).then(function (response) {
+        console.log(response)
+        that.$router.push('/home')
+      }).catch(function (error) {
+        //that.$refs["error"].open();
+      })
+    }
   }
 }
 </script>
