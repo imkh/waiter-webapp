@@ -1,4 +1,6 @@
-# webapp
+# Waiter Web App
+
+This repository contains the source code for the Waiter Web App.
 
 > A Vue.js project
 
