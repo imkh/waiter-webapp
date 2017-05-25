@@ -1,25 +1,21 @@
 <template>
   <md-card-content>
-      <md-input-container>
-        <label>First name</label>
-        <md-input type="default" v-model="firstname"></md-input>
+    <md-input-container md-has-password>
+        <label>Current password</label>
+        <md-input type="password" v-model="password"></md-input>
       </md-input-container>
-      <md-input-container>
-        <label>Last name</label>
-        <md-input type="default" v-model="lastname"></md-input>
+      <md-input-container md-has-password>
+        <label>New password</label>
+        <md-input type="newPassword" v-model="newPassword"></md-input>
       </md-input-container>
-      <md-input-container>
-        <label>Email address</label>
-        <md-input type="default" v-model="email"></md-input>
-      </md-input-container>
-      <md-button class="md-raised md-primary" v-on:click="doUpdate()">Update</md-button>
+      <md-button class="md-raised md-primary" v-on:click="doSave()">Save</md-button>
   </md-card-content>
 </template>
 
 <script>
 import axios from 'axios'
 export default {
-  name: 'Account',
+  name: 'Security',
   data () {
     return {
       firstname: '',
@@ -31,11 +27,11 @@ export default {
     }
   },
   methods: {
-    doUpdate: function() {
+    doSave: function() {
       var that = this
       axios.defaults.headers.common['x-access-token'] = localStorage.getItem("token");
-      axios.put('http://localhost:5000/user/' + localStorage.getItem("user") + '/profile', {firstname: this.firstname, lastname: this.lastname, email: this.email}).then(function (response) {
-        console.log(response)
+      axios.put('http://localhost:5000/user/' + localStorage.getItem("user") + '/password', {password: this.password, newPassword: this.newPassword}).then(function (response) {
+
         that.$router.push('/home')
       }).catch(function (error) {
         //that.$refs["error"].open();

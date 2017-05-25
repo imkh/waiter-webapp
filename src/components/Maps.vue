@@ -6,7 +6,7 @@
       <gmap-map
         :center="center"
         :zoom="17"
-        style="width: 1100px; height: 800px"
+        style="width: 1080px; height: 800px"
       >
       </gmap-map>
     </template>

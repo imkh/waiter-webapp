@@ -10,6 +10,12 @@ import 'vue-material/dist/vue-material.css'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
 import LandingPage from './components/LandingPage'
+import SideNav from './components/SideNav'
+import Maps from './components/Maps'
+import Events from './components/Events'
+import Account from './components/Account'
+import Security from './components/Security'
+
 
 Vue.use(VueMaterial)
 Vue.use(VueRouter)
@@ -24,7 +30,11 @@ Vue.use(VueGoogleMaps, {
 const routes = [
   { path: '/', component: Login },
   { path: '/signup', component: SignUp },
-  { path: '/home', component: LandingPage }
+  { path: '/home', component: Events },
+  { path: '/Maps', component: Maps },
+  { path: '/Events', component: Events },
+  { path: '/Account', component: Account },
+  { path: '/Security', component: Security }
 ]
 
 const router = new VueRouter({
@@ -32,6 +42,8 @@ const router = new VueRouter({
   base: __dirname,
   routes
 })
+
+Vue.component('app-sidenav', SideNav)
 
 /* eslint-disable no-new */
 new Vue({

@@ -1,24 +1,27 @@
 <template>
-  <md-card-content>
     <ul>
       <template v-for="item in items">
         <li style="list-style:none;">
           <md-card>
+          <md-card-header>
+            <div class="md-title"><em>{{ item.name }}</em><br></div>
+          </md-card-header>
             <md-card-content>
-              <em>{{ item.name }}</em><br>
               {{ item.description }}
+              <md-card-actions>
+                <md-button class="md-primary" @click.native="openDialog('dialog3')">Request a Waiter</md-button>
+              </md-card-actions>
           </md-card-content>
         </md-card>
         </li>
       </template>
     </ul>
-  </md-card-content>
 </template>
 
 <script>
 import axios from 'axios'
 export default {
-  name: 'LandingPage',
+  name: 'Events',
   data () {
     return {
       firstname: '',

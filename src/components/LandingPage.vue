@@ -1,28 +1,8 @@
 <template>
   <div>
     <md-tabs md-fixed>
-      <md-tab id="map" md-label="Maps">
-        <Maps></Maps>
-      </md-tab>
-
-      <md-tab id="event" md-label="Events">
-        <Events></Events>
-      </md-tab>
-
-      <md-tab id="account" md-label="Account">
-        <Account></Account>
-      </md-tab>
-
       <md-tab id="security" md-label="Security">
-        <md-input-container md-has-password>
-          <label>Current password</label>
-          <md-input type="password" v-model="password"></md-input>
-        </md-input-container>
-        <md-input-container md-has-password>
-          <label>New password</label>
-          <md-input type="newPassword" v-model="newPassword"></md-input>
-        </md-input-container>
-        <md-button class="md-raised md-primary" v-on:click="doSave()">Save</md-button>
+
       </md-tab>
     </md-tabs>
     <md-card>
