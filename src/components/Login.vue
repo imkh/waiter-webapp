@@ -66,7 +66,7 @@ export default {
 </script>
 
 <style>
-#app {
+/*#app {
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -75,5 +75,5 @@ export default {
   margin-top: 30px;
   margin-left: 300px;
   margin-right: 300px;
-}
+}*/
 </style>
