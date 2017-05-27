@@ -16,7 +16,6 @@ import Events from './components/Events'
 import Account from './components/Account'
 import Security from './components/Security'
 
-
 Vue.use(VueMaterial)
 Vue.use(VueRouter)
 Vue.use(VueGoogleMaps, {
